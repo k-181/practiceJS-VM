@@ -1,3 +1,3 @@
 # VM
 
-vending machine  with html, css and javascript.
+A vending machine designed with html, css and JS
