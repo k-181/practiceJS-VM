@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<!-- css -->
+	<link rel="stylesheet" href="VM.css">
+</head>
+
+<body>
+	<div id="machine">
+		<!-- 제품버튼 -->
+		<div id="can1">
+			<img style="border-radius: 5px;" src="./img/can.jpg">
+			<img style="border-radius: 5px;" src="./img/can.jpg">
+			<img style="border-radius: 5px;" src="./img/can.jpg">
+			<img style="border-radius: 5px;" src="./img/can.jpg">
+		</div>
+		<div id="c_name1">
+			A&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;B&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;D
+		</div>
+		<div id="container1">
+			4500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;800
+		</div>
+		<div id="btn">
+			<div id="btn_1">
+				<button value="4500" onclick="sub(4500)">구매</button>
+				<button value="1500" onclick="sub(1500)">구매</button>
+				<button value="1000" onclick="sub(1000)">구매</button>
+				<button value="800" onclick="sub(800)">구매</button>
+			</div>
+			<div id="can2">
+				<img style="border-radius: 5px;" src="./img/can.jpg">
+				<img style="border-radius: 5px;" src="./img/can.jpg">
+				<img style="border-radius: 5px;" src="./img/can.jpg">
+				<img style="border-radius: 5px;" src="./img/can.jpg">
+			</div>
+			<div id="c_name2">
+				E&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;F&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;G&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;H
+			</div>
+			<div id="container2">
+				2500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1700&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;9500&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;3800
+			</div>
+			<div id="btn_2">
+				<button value="2500" onclick="sub(2500)">구매</button>
+				<button value="1700" onclick="sub(1700)">구매</button>
+				<button value="9500" onclick="sub(9500)">구매</button>
+				<button value="3800" onclick="sub(3800)">구매</button>
+			</div>
+		</div>
+		<h3 style="color: #424242;">잔액</h3>
+		<div id="b_screen">
+			<!-- 잔액스크린 -->
+			<input type="text" value="0" id="balance">
+		</div>
+
+		<div id="b_btn">
+			<!-- 투입금버튼 -->
+			<div id="b_btn1">
+				<input type="button" value="100" onclick="add(100)">
+				<input type="button" value="500" onclick="add(500)">
+			</div>
+			<div id="b_btn2">
+				<input type="button" value="1000" onclick="add(1000)">
+				<input type="button" value="5000" onclick="add(5000)">
+			</div>
+		</div>
+		<div id="s_screen">
+			<!-- 구매제품 스크린 -->
+			<input type="text" id="stuff" value="구매 제품">
+		</div>
+		<div id="c_btn">
+			<!-- 반환버튼 -->
+			<input type="button" id="change" value="잔액반환" onclick="change();">
+		</div>
+		<div id="gs_btn">
+			<!-- 수거버튼 -->
+			<input type="button" id="getstuff" value="제품수거" onclick="getstuff();">
+		</div>
+	</div>
+</body>
+<!-- js -->
+<script>
+	/*구매제품*/
+	var namea = "A";
+	var nameb = "B";
+	var namec = "C";
+	var named = "D";
+	var namee = "E";
+	var namef = "F";
+	var nameg = "G";
+	var nameh = "H";
+	var subname = "";
+
+	/*잔액추가버튼*/
+	function add(x) {
+		balance = document.getElementById('balance');
+		var add;
+		add = parseInt(balance.value) + parseInt(x);
+		document.getElementById('balance').value = add;
+	}
+
+	/*제품 선택 후 잔액 차감*/
+	function sub(y) {
+		var sub;
+		if (parseInt(balance.value) < y) {
+
+			alert('잔액이 부족합니다.');
+		}
+		else {
+
+			sub = parseInt(balance.value) - parseInt(y);
+			document.getElementById('balance').value = sub;
+
+			/*구매제품표시*/
+			if (y == 4500) {
+				subname = subname + " " + namea;
+				document.getElementById('stuff').value = subname;
+			}
+			if (y == 1500) {
+				subname = subname + " " + nameb;
+				document.getElementById('stuff').value = subname;
+			}
+			if (y == 1000) {
+				subname = subname + " " + namec;
+				document.getElementById('stuff').value = subname;
+			}
+			if (y == 800) {
+				subname = subname + " " + named;
+				document.getElementById('stuff').value = subname;
+			}
+			if (y == 2500) {
+				subname = subname + " " + namee;
+				document.getElementById('stuff').value = subname;
+			}
+			if (y == 1700) {
+				subname = subname + " " + namef;
+				document.getElementById('stuff').value = subname;
+			}
+			if (y == 9500) {
+				subname = subname + " " + nameg;
+				document.getElementById('stuff').value = subname;
+			}
+			if (y == 3800) {
+				subname = subname + " " + nameh;
+				document.getElementById('stuff').value = subname;
+			}
+		}
+	}
+
+	/*잔액반환 및 잔액스크린 초기화*/
+	function change() {
+		alert(document.getElementById('balance').value + "원이 회수되었습니다.");
+		document.getElementById('balance').value = "0";
+	}
+
+	/*제품수거 및 구매제품스크린 초기화*/
+	function getstuff() {
+		alert("구매 제품 : " + document.getElementById('stuff').value + "의 수거가 완료되었습니다.");
+		document.getElementById('stuff').value = "구매 제품";
+
+	}
+
+</script>
+
+</html>
